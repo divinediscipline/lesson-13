@@ -2,14 +2,25 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
+// const config = {
+//   apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
+//   authDomain: 'crwn-db.firebaseapp.com',
+//   databaseURL: 'https://crwn-db.firebaseio.com',
+//   projectId: 'crwn-db',
+//   storageBucket: 'crwn-db.appspot.com',
+//   messagingSenderId: '850995411664',
+//   appId: '1:850995411664:web:7ddc01d597846f65'
+// };
+
 const config = {
-  apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
-  authDomain: 'crwn-db.firebaseapp.com',
-  databaseURL: 'https://crwn-db.firebaseio.com',
-  projectId: 'crwn-db',
-  storageBucket: 'crwn-db.appspot.com',
-  messagingSenderId: '850995411664',
-  appId: '1:850995411664:web:7ddc01d597846f65'
+  apiKey: "AIzaSyB03e_o4QWB9w7aqB7m2_x11Cw2hRCOyCY",
+  authDomain: "smart-clothing-db.firebaseapp.com",
+  databaseURL: "https://smart-clothing-db.firebaseio.com",
+  projectId: "smart-clothing-db",
+  storageBucket: "smart-clothing-db.appspot.com",
+  messagingSenderId: "236269384007",
+  appId: "1:236269384007:web:c1706ca86158cf419f5c62",
+  measurementId: "G-TSQGHMB075"
 };
 
 firebase.initializeApp(config);

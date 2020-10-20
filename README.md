@@ -1,26 +1,6 @@
-## Lesson-13
+# For redux
+- move only state you feel might be changed from different parts of the app to the redux store. Ask yourself, would we want to read the value of this state in different places eg showing the cart dropdown in this app may be triggered from numerous places hence the need to put the state controlling it in the global redux store. 
 
-Let's update our app so that after a user signs-in they are redirected to the home page, also if a user is signed into our application, we don't want them to be able to access the signinandsignup page.
+The reducer is much like the normal react state. It is a function that takes the initial state and action as arguments. You set an initial state of what you want before any interaction and then modify this state if it matches the exact action type you are expecting. if the action has a payload, we usually want to somehow attach this payload to the new state.
 
-# How to fork and clone
-
-One quick note about cloning this project. If you wish to make commits and push the code up after cloning this repo, you should fork the project first. In order to own your own copy of this repository, you have to fork it so you get your own copy on your own profile!
-
-You can see the fork button in the top right corner of every GitHub project; click it and a copy of the project will be added to your GitHub profile under the same name as the original project.
-
-![alt text](https://i.ibb.co/1YN7SJ6/Screen-Shot-2019-07-01-at-2-02-40-AM.png "image to fork button")
-
-After forking the project, simply clone it the way you would from the new forked project in your own GitHub repository and you can commit and push to it freely!
-
-
-# After you fork and clone:
-
-## Install dependencies
-
-In your terminal after you clone your project down, remember to run either `yarn` or `npm install` to build all the dependencies in the project.
-
-## Set your firebase config
-
-Remember to replace the `config` variable in your `firebase.utils.js` with your own config object from the firebase dashboard! Navigate to the project settings and scroll down to the config code. Copy the object in the code and replace the variable in your cloned code.
-
-![alt text](https://i.ibb.co/6ywMkBf/Screen-Shot-2019-07-01-at-11-35-02-AM.png "image to firebase config")
+The actio(not action type) is a function that returns an object. its essentially an object really, we make it a function for modularity reasons so we can import and pass it around. This object usually contains a type property(usually required/present) and an optional payload. The reducer imports this action and uses it.
