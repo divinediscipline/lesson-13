@@ -1,7 +1,9 @@
 import CartActionTypes from './cart.types';
+import { addItemToCart } from './cart.utils';
 
 const INITIAL_STATE = {
-  hidden: true
+  hidden: true,
+  cartItems: [],
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -13,7 +15,16 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       }
       default:
         return state;
+
+    case CartActionTypes.ADD_ITEM:
+      return {
+        ...state,
+        cartItems: addItemToCart(state.cartItems, action.payload)
+      }
   }
 }
 
 export default cartReducer;
+
+// Notice how we break up our reducer into modular parts
+// the cart reducer handles showing/hiding the cart and also showing/adding items into the cart
