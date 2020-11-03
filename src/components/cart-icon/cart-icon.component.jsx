@@ -4,6 +4,7 @@ import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
 import "./cart-icon.styles.scss";
 import { toggleCartHidden } from "../../redux/cart/cart.actions";
 import { selectCartItemsCount } from "../../redux/cart/cart.selectors";
+import { createStructuredSelector } from "reselect";
 
 const CartIcon = ({ toggleCartHidden, itemCount }) => (
   <div className="cart-icon" onClick={toggleCartHidden}>
@@ -28,11 +29,10 @@ const mapDispatchToProps = (dispatch) => ({
 //   )}
 // }
 
-const mapStateToProps = (state) => {
-  console.log( 'I am being called anytime the state is chnaged')
-  // The reduce function here is a selector as it takes a slice of the state and derives some value from it usually on the fly
-  // selectors are just functions that take a part/all of the state and derives some value from it
-  return { itemCount: selectCartItemsCount(state) }
-}
+// just to be clear, mapStateToProps is still being called anytime any reducer funtion is triggered despite the use of reselect
+// the major purpose of reselect is that it prevents recomputation of complex logic that might be inside our mapStateToProps by memoizing the result
+const mapStateToProps = createStructuredSelector({
+  itemCount: selectCartItemsCount,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

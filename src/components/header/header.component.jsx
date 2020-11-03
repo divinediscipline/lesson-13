@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect'
 
 import { auth } from '../../firebase/firebase.utils';
 
@@ -9,6 +10,8 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import './header.styles.scss';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import { selectCurrentUser} from '../../redux/user/user.selector';
+import { selectCartHidden } from '../../redux/cart/cart.selectors'
 
 const Header = ({ currentUser, hidden }) => (
   
@@ -40,10 +43,10 @@ const Header = ({ currentUser, hidden }) => (
   </div>
 );
 
-// mapStateToProps takes the complete state as an argument which is beng destructured here to give the current user and hidden properties
-const mapStateToProps = ({user: {currentUser}, cart: { hidden }}) => ({
-  currentUser,
-  hidden,
+// mapStateToProps takes the complete state as an argument which is being destructured here to give the current user and hidden properties(please check a previous commit before selectors were introduced to see this)
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Header);
