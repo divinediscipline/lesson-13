@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect'
 
@@ -8,39 +7,39 @@ import { auth } from '../../firebase/firebase.utils';
 import CartIcon from '../cart-icon/cart-icon.component'
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-import './header.styles.scss';
+// import './header.styles.scss';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { selectCurrentUser} from '../../redux/user/user.selector';
 import { selectCartHidden } from '../../redux/cart/cart.selectors'
+import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from './header.styles'
 
 const Header = ({ currentUser, hidden }) => (
   
-  <div className='header'>
-    <Link className='logo-container' to='/'>
+  <HeaderContainer>
+    <LogoContainer to='/'>
       <Logo className='logo' />
-    </Link>
+    </LogoContainer>
     {console.log(444, currentUser)}
-    <div className='options'>
-      <Link className='option' to='/shop'>
+    <OptionsContainer>
+      <OptionLink to='/shop'>
         SHOP
-      </Link>
-      <Link className='option' to='/shop'>
+      </OptionLink>
+      <OptionLink to='/shop'>
         CONTACT
-      </Link>
+      </OptionLink>
       {currentUser ? (
-        <div className='option' onClick={() => auth.signOut()}>
+        <OptionLink as='div' onClick={() => auth.signOut()}>
           SIGN OUT
-        </div>
+        </OptionLink>
       ) : (
-        <Link className='option' to='/signin'>
+        <OptionLink to='/signin'>
           SIGN IN
-        </Link>
+        </OptionLink>
       )}
       <CartIcon/>
-    </div>
+    </OptionsContainer>
       { hidden ? null : <CartDropdown/> }
-    
-  </div>
+   </HeaderContainer>
 );
 
 // mapStateToProps takes the complete state as an argument which is being destructured here to give the current user and hidden properties(please check a previous commit before selectors were introduced to see this)
