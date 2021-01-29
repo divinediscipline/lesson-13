@@ -9,3 +9,6 @@ The actio(not action type) is a function that returns an object. its essentially
 <!-- Documenting where I stopped each time on the github repo-->
 <!-- Mon 4/01/2021 -->
 <!-- https://github.com/ZhangMYihua/lesson-24/blob/master/src/pages/checkout/checkout.styles.scss -->
+
+
+<!--  file:///Users/divinelovechukwuemeka/Downloads/Complete-React-Course-Course-Guideline%20(3).pdf-->
